@@ -1,0 +1,11 @@
+PICO-8.app
+/PICO-8.app
+
+PICO-8.app
+/PICO-8.app
+PICO-8.app/
+/PICO-8
+
+*.app
+
+.DS_Store
