@@ -43,6 +43,11 @@ end
 
 function _update()
     -- check if the mouse is over the cookie
+
+    -- printh length of plus_one_locations
+    printh(#plus_one_locations)
+    printh(#auto_clicker_locations)
+
     if is_mouse_clicked() then
         clicked_this_frame = true
 
@@ -91,14 +96,16 @@ end
 
 function draw_plus_ones()
     for i = 1, #plus_one_locations do
-        plus_one_locations[i].life = plus_one_locations[i].life - 1
+        if plus_one_locations[i] != nil then
+            plus_one_locations[i].life = plus_one_locations[i].life - 1
 
-        if plus_one_locations[i].life <= 0 then
-            del(plus_one_locations, i)
-        else
-            color = get_plus_one_color(plus_one_locations[i].life)
-            plus_one_locations[i].y = plus_one_locations[i].y - 1
-            print("+1", plus_one_locations[i].x, plus_one_locations[i].y, color)
+            if plus_one_locations[i].life <= 0 then
+                del(plus_one_locations, plus_one_locations[i])
+            else
+                color = get_plus_one_color(plus_one_locations[i].life)
+                plus_one_locations[i].y = plus_one_locations[i].y - 1
+                print("+1", plus_one_locations[i].x, plus_one_locations[i].y, color)
+            end
         end
     end
 end
